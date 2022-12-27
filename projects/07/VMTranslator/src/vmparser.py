@@ -22,7 +22,7 @@ class VMParser:
     
     def __init__(self, path: str):
         with open(path) as f:
-            self.lines: list[str] = f.readlines
+            self.lines: list[str] = f.readlines()
 
         self.current_line: int = -1
         self.command_type: Optional[str] = None
@@ -61,7 +61,7 @@ class VMParser:
 
     @property
     def has_more_lines(self) -> bool:
-        return len(self.lines) > self.current_line
+        return len(self.lines) > self.current_line + 1
     
     def _is_valid_line(self, line: str) -> bool:
         """Ignore lines if they are either blank or only contain a comment"""
