@@ -95,7 +95,10 @@ D=M
 @SP
 M=M-1
 A=M
-M=M+D
+D=M+D
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @2
@@ -115,7 +118,10 @@ D=M
 @SP
 M=M-1
 A=M
-M=M-D
+D=M-D
+@SP
+A=M
+M=D
 @SP
 M=M+1
 @6
@@ -135,7 +141,10 @@ D=M
 @SP
 M=M-1
 A=M
-M=M+D
+D=M+D
+@SP
+A=M
+M=D
 @SP
 M=M+1
 (END)
