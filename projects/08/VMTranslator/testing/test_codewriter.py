@@ -9,6 +9,7 @@ def codewriter():
     def mock_init(self):
         self.destination = StringIO()
         self.bool_count = 0
+        self.return_count = 0
         self.filename = "Foo"
 
     CodeWriter.__init__ = mock_init
@@ -304,7 +305,6 @@ def test_write_function(codewriter: CodeWriter):
     assert "\n".join(expected_asm) + "\n" == codewriter.destination.getvalue()
 
 
-@pytest.mark.skip(reason="Not implemented")
 def test_write_call(codewriter: CodeWriter):
 
     num_args = 2
@@ -348,7 +348,7 @@ def test_write_call(codewriter: CodeWriter):
         "@SP",  # Set new address of ARG to be SP - 5 - numArgs
         "D=M",
         "@5",
-        "D=D-A"
+        "D=D-A",
         f"@{num_args}",
         "D=D-A",
         "@ARG",
@@ -372,19 +372,60 @@ def test_write_return(codewriter: CodeWriter):
     expected_asm = [
         "@LCL",
         "D=A",
-        "@5",  # push temp 0
-        "M=D",
         "@5",
+        "M=D",
         "A=D-A",
         "D=M",
-        "@6",  # push temp 1
+        "@6",
         "M=D",
-        "@ARG", # pop arg 0; I think the version of this in my notes is wrong,
-        # so redo it
+        "@ARG",
+        "D=M",
+        "@R13",
+        "M=D",
+        "@SP",
+        "M=M-1",
+        "A=M",
+        "D=M",
+        "@R13",
+        "A=M",
+        "M=D",
+        "@R13",
+        "D=M+1",
+        "@SP",
+        "M=D",
+        "@5",
+        "D=M",
+        "@1",
+        "A=D-A",
+        "D=M",
+        "@THAT",
+        "M=D",
+        "@5",
+        "D=M",
+        "@2",
+        "A=D-A",
+        "D=M",
+        "@THIS",
+        "M=D",
+        "@5",
+        "D=M",
+        "@3",
+        "A=D-A",
+        "D=M",
+        "@ARG",
+        "M=D",
+        "@5",
+        "D=M",
+        "@4",
+        "A=D-A",
+        "D=M",
+        "@LCL",
+        "M=D",
+        "@6",
+        "A=M",
+        "0;JMP",
     ]
-
 
     codewriter.set_file_name("Foo")
     codewriter.write_return()
-    assert "\n".join(expected_asm) == codewriter.destination.getvalue()
-
+    assert "\n".join(expected_asm) + "\n" == codewriter.destination.getvalue()

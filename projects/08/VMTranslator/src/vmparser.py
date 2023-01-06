@@ -78,9 +78,14 @@ class VMParser:
         return True
 
     def _handle_1_part_instructions(self, line_parts: list[str]) -> None:
-        self.command_type = CommandTypeEnum.C_ARITHMETIC
-        self.arg1 = line_parts[0]
-        self.arg2 = None
+        if line_parts[0] == "return":
+            self.command_type = CommandTypeEnum.C_RETURN
+            self.arg1 = None
+            self.arg2 = None
+        else:
+            self.command_type = CommandTypeEnum.C_ARITHMETIC
+            self.arg1 = line_parts[0]
+            self.arg2 = None
 
     def _handle_2_part_instructions(self, line_parts: list[str]) -> None:
         if line_parts[0] == "label":
@@ -100,13 +105,17 @@ class VMParser:
                 f"Parser cannot handle 2-part instruction {line_parts[0]}"
             )
 
-    def _handle_3_part_instructions(self, line_parts: list[str]) -> None:
+    def _handle_3_part_instructions(self, line_parts: list[str, int]) -> None:
         self.arg1 = line_parts[1]
         self.arg2 = int(line_parts[2])
         if line_parts[0] == "push":
             self.command_type = CommandTypeEnum.C_PUSH
         elif line_parts[0] == "pop":
             self.command_type = CommandTypeEnum.C_POP
+        elif line_parts[0] == "function":
+            self.command_type = CommandTypeEnum.C_FUNCTION
+        elif line_parts[0] == "call":
+            self.command_type = CommandTypeEnum.C_CALL
         else:
             raise NotImplementedError(
                 f"Parser cannot handle instruction {line_parts[0]}"

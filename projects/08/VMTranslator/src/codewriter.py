@@ -10,7 +10,9 @@ class WritableCommandEnum(str, Enum):
     def _generate_next_value(name, start, count, last_values):
         return name
 
-
+ARG = "@ARG\n"
+LCL = "@LCL\n"
+R13 = "@R13\n"
 PUSH_D = [
     "@SP\n",
     "A=M\n",
@@ -20,15 +22,18 @@ PUSH_D = [
 ]
 POP_D = [
     "@SP\n",
+    # Sonarqube is trying to get me to hide an inefficiency; this should be
+    # AM=M-1. wait til this works to fix as will require modifying tests 
+    # (bad test design)
     "M=M-1\n",
     "A=M\n",
     "D=M\n",       
 ]
-POP_INTO_ADDRESS = [
-    "@R13\n",
+POP_INTO_ADDRESS_IN_D = [
+    R13,
     "M=D\n",
     *POP_D,
-    "@R13\n",
+    R13,
     "A=M\n",
     "M=D\n",
 ]
@@ -44,6 +49,7 @@ SEGMENT_TO_ADDRESS_MAP = {
     "this": "THIS",
     "that": "THAT",
 }
+UNCONDITIONAL_JUMP = "0;JMP\n"
             
 
 class CodeWriter:    
@@ -53,6 +59,20 @@ class CodeWriter:
         self.filename = self._determine_filename(path)
         # Keep track of how many boolean checks there have been
         self.bool_count = 0
+        # Keep track of function returns
+        self.return_count = 0
+        self._write_bootstap()
+
+    def _write_bootstap(self):
+        self.destination.writelines(
+            [
+                "@256\n",
+                "D=A\n",
+                "@SP\n",
+                "M=D\n",
+            ]
+        )
+        self.write_call("Sys.init", 0)
 
     def set_file_name(self, filename: str) -> None:
         self.filename = filename
@@ -103,13 +123,107 @@ class CodeWriter:
     def write_goto(self, label: str) -> None:
         """Write an unconditional goto operation, i.e., one that always goes
         to the provided label"""
-        self.destination.write(f"@{label}\n0;JMP\n")
+        self.destination.write(f"@{label}\n{UNCONDITIONAL_JUMP}")
 
     def write_if(self, label: str) -> None:
         """Write an if-goto (i.e., conditional goto) operation, i.e., one that
         pops the top value off the stack and, if non-zero, goes to the provided
         label"""
         self.destination.writelines([*POP_D, f"@{label}\n", "D;JNE\n",])
+
+    def write_function(self, function_name: str, nvars: int) -> None:
+        """Write a function definition; zero out a number of memory locations
+        equivalent to nvars and then push the function label"""
+        lines = [f"({function_name})\n",]
+        for _ in range(nvars):
+            lines.extend(["@SP\n", "A=M\n", "M=0\n", "@SP\n", "M=M+1\n",])
+
+        self.destination.writelines(lines)
+
+    def write_call(self, function_name: str, nargs: int) -> None:
+        """Write a function call; push the return address, push the old memory
+        addresses, update arg and lcl and then set the return address"""
+        lines = [
+            f"@{function_name}$ret.{self.return_count}\n",
+            "D=A\n",
+            *PUSH_D,
+            LCL,
+            "D=M\n",
+            *PUSH_D,
+            ARG,
+            "D=M\n",
+            *PUSH_D,
+            "@THIS\n",
+            "D=M\n",
+            *PUSH_D,
+            "@THAT\n",
+            "D=M\n",
+            *PUSH_D,
+            "@SP\n",
+            "D=M\n",
+            "@5\n",
+            "D=D-A\n",
+            f"@{nargs}\n",
+            "D=D-A\n",
+            ARG,
+            "M=D\n",
+            "@SP\n",
+            "D=M\n",
+            LCL,
+            "M=D\n",
+            f"@{function_name}\n",
+            UNCONDITIONAL_JUMP,
+            f"({function_name}$ret.{self.return_count})\n",
+        ]
+
+        self.destination.writelines(lines)
+        self.return_count += 1
+
+    def write_return(self):
+        """Write a function return: reposition the return value for the caller,
+        reposition THAT, THIS, ARG and LCL and return to the supplied return 
+        label"""
+
+        address_to_frame_offset = {
+            "THAT": 1,
+            "THIS": 2,
+            "ARG": 3,
+            "LCL": 4,
+        }
+
+        lines = [
+            LCL,
+            "D=M\n",
+            "@5\n",
+            "M=D\n",
+            "A=D-A\n",
+            "D=M\n",
+            "@6\n",
+            "M=D\n",
+            ARG,
+            "D=M\n",
+            *POP_INTO_ADDRESS_IN_D,
+            R13,
+            "D=M+1\n",
+            "@SP\n",
+            "M=D\n",
+        ]
+
+        for address in address_to_frame_offset:
+            lines.extend(
+                [
+                    "@5\n",
+                    "D=M\n",
+                    f"@{address_to_frame_offset[address]}\n",
+                    "A=D-A\n",
+                    "D=M\n",
+                    f"@{address}\n",
+                    "M=D\n",
+                ]
+            )
+
+        lines.extend(["@6\n", "A=M\n", UNCONDITIONAL_JUMP,])
+        self.destination.writelines(lines)
 
     def _determine_filename(self, path: str):
         return path.split("/")[-1].split(".")[0]
@@ -137,11 +251,11 @@ class CodeWriter:
                 f"D;{jump}\n",
                 "D=-1\n",
                 f"@CONTINUE_{self.bool_count}\n",
-                "0;JMP\n",
+                UNCONDITIONAL_JUMP,
                 f"(FALSE_{self.bool_count})\n",
                 "D=0\n",
                 f"@CONTINUE_{self.bool_count}\n",
-                "0;JMP\n",
+                UNCONDITIONAL_JUMP,
                 f"(CONTINUE_{self.bool_count})\n",
                 *PUSH_D,
             ]
@@ -175,7 +289,7 @@ class CodeWriter:
                 "D=D+A\n",
             ]
         # Store the address in R13, then Pop SP into address in R13
-        lines.extend(POP_INTO_ADDRESS)
+        lines.extend(POP_INTO_ADDRESS_IN_D)
         return lines
 
     def _handle_push(self, segment: str, index: int) -> list[str]:
@@ -220,7 +334,7 @@ class CodeWriter:
         end_loop = [
             "(END)\n",
             "@END\n",
-            "0;JMP\n",
+            UNCONDITIONAL_JUMP,
         ]
         self.destination.writelines(end_loop)
         self.destination.close()

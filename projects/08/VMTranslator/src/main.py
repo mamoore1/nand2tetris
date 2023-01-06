@@ -47,6 +47,12 @@ def write_lines(parser, writer) -> None:
             writer.write_goto(parser.arg1)
         elif parser.command_type == vmparser.CommandTypeEnum.C_IF:
             writer.write_if(parser.arg1)
+        elif parser.command_type == vmparser.CommandTypeEnum.C_FUNCTION:
+            writer.write_function(parser.arg1, parser.arg2)
+        elif parser.command_type == vmparser.CommandTypeEnum.C_CALL:
+            writer.write_call(parser.arg1, parser.arg2)
+        elif parser.command_type == vmparser.CommandTypeEnum.C_RETURN:
+            writer.write_return()
         else:
             raise NotImplementedError(
                 f"Translator cannot handle command: {parser.command_type.name}"
