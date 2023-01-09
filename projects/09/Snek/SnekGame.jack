@@ -1,0 +1,83 @@
+
+/**
+ * Implements the Snek game.
+ * This game allows the user to move a snake around the screen and eat the 
+ * apples that appear on screen. Every time an apple is eaten, the snake gets
+ * one block longer and a new apple is created. The game ends when either 
+ * the snake runs into itself, runs into the edge of the screen, or the player
+ * presses 'q' on the keyboard. The 4 arrow keys are used to control the 
+ * direction of movement of the first segment (snekment) of the snake, while 
+ * the other snekments move directly into the position of the preceeding 
+ * snekment. 
+ *
+ * Currently creates a 3 block snake that can move around the screen; 
+ * TODO: 
+ * - end game if snake hits walls
+ * - add ability to eat apples and grow snake
+ * - display current score
+ */
+
+class SnekGame {
+    field Snek snek;      // The snek used for the game
+    field int direction;  // The current direction of movement of the snek:
+                          // 0=up, 1=right, 2=down, 3=left,
+
+    /** Constructs a new SnekGame. */
+    constructor SnekGame new() {
+        // Creates a Snek with 3 snekments and positions it in the middle of
+        // the screen 
+        let snek = Snek.new();  // Positioning and size of a new Snek is 
+            // determined by the Snek class (might want to change this for 
+            // testing purposes)
+        let direction = 1;  // initial direction is to the right
+        return this;
+    }
+
+    /** Disposes this game. */
+    method void dispose() {
+        do snek.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Moves the snake in the current direction. */
+    method void moveSnek() {
+        if (direction = 0) { do snek.moveUp(); }
+        if (direction = 1) { do snek.moveRight();}
+        if (direction = 2) { do snek.moveDown();}
+        if (direction = 3) { do snek.moveLeft();}
+        do Sys.wait(60);
+        return; 
+    }
+
+    // TODO: Probably makes sense to initially build this to the point where a 
+    // snake is scampering around the screen, then deal with the Apple stuff
+
+    /** Runs the game: handles the user's inputs and moves the snake 
+    * accordingly, spawns and removes apples */
+    method void run() {
+        var char key;   // The key currently pressed by the user 
+        var boolean exit;
+        let exit = false;
+
+        while (~exit) {
+            // waits for a key to be pressed
+            while (key = 0) {
+                let key = Keyboard.keyPressed();
+                do moveSnek();
+            }
+            if (key = 81) { let exit = true; }     // q key
+            if (key = 131) { let direction = 0; }  // up arrow
+            if (key = 132) { let direction = 1; }  // right arrow
+            if (key = 133) { let direction = 2; }  // down arrow
+            if (key = 130) { let direction = 3; }  // left arrow
+
+            // waits for the key to be released
+            while (~(key = 0)) {
+                let key = Keyboard.keyPressed();
+                do moveSnek();
+            }
+        }
+        return;
+    }
+}

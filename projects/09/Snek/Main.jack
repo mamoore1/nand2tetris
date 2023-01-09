@@ -1,0 +1,11 @@
+
+/** Initialises a new Snek game and starts running it. */
+class Main {
+    function void main() {
+        var SnekGame game;
+        let game = SnekGame.new();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}

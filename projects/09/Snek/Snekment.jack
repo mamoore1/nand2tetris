@@ -1,0 +1,75 @@
+
+/** Class for the individual segments of a snake*/
+class Snekment {
+    field int last_direction;  // The previous direction the snekment moved in
+    field int x, y;  // The coordinates of the snekment
+    field Snekment next;    // The next snekment in the snake
+    field int size;     // The size of the snekment
+
+    /** Creates a Snekment */
+    constructor Snekment new(int Alast_direction, int Ax, int Ay, int Anext) {
+        let last_direction = Alast_direction;
+        let x = Ax;
+        let y = Ay;
+        let next = Anext;
+        let size = 10;
+        // Draw the snekment
+        do draw();
+        return this;
+    }
+
+    /** Accessors */
+    method int getX() { return x; }
+    method int getY() { return y; }
+
+    /** Disposes of Snekments by recursively disposing the tail */
+    method void dispose() {
+        if (~(next = null)) {
+            do next.dispose();
+        }
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Draws the snekment on the screen */
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+size, y+size);
+        return;
+    }
+
+    /** Erases the snekment from the screen */
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x+size, y+size);
+        return;
+    }
+
+    /** Update the x and y values accordingly for the provided direction,
+     * recursively call move on the next Snekment with the last_direction and then
+     * update last_direction */
+    method void move(int direction) {
+        var int delta_x, delta_y;
+        let delta_x = 0;
+        let delta_y = 0;
+
+        if (direction = 0) { let delta_y = -10; }
+        if (direction = 1) { let delta_x = 10; }
+        if (direction = 2) { let delta_y = 10; }
+        if (direction = 3) { let delta_x = -10; }
+
+        do erase();
+
+        let x = x + delta_x;
+        let y = y + delta_y;
+
+        do draw();
+
+        if (~(next = null)) {
+            do next.move(last_direction);
+        }
+        let last_direction = direction;
+
+        return;
+    }
+}

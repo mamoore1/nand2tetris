@@ -1,0 +1,72 @@
+    /* The options are basically: 1) have an array of Snekments that the 
+     * Snek class manages, or 2) have a head Snekment that the Snek class 
+     * manages, and then have a linked list of Snekments that manage themselves.
+     * 2 seems simpler to me, as then we can set up a bunch of recursive methods
+     * that basically mean we don't need to deal with the Snekments at all; we
+     * just tell them to do stuff.
+     *
+     * One thing is that approach 2 might make the Snek class redundant; it's
+     * not clear that it's needed as an interface, as we could just issue 
+     * commands to the Snekments individually. I'm not 100% sure about this 
+     * though, as it might be useful to have an interface that interacts 
+     * directly with the "head" Snekment, which has methods that other 
+     * Snekments don't require. I'll keep the Snek class for the moment but
+     * see if it can be removed later.
+     *
+     * Actually I think it does make sense as, e.g., moveUp is not a command 
+     * that will make sense to a Snekment; instead they will just call "move"
+     * with whatever direction they were provided by the previous Snekment.
+     * moveUp is just an abstraction whereby we pass the head Snekment a command
+     * to move up; we could actually just drop this entirely, but moveUp is a 
+     * more friendly interface for SnekGame than "move(0)". (it may not be that
+     * much friendlier/necessary, but it can always be removed later)
+     */
+
+class Snek {
+    field Snekment head;      // The head of the snake
+
+    /** Construct a new Snek */
+    constructor Snek new() {
+        var Snekment snek1, snek2;
+        var int start_direction;
+
+        let start_direction = 1;  // Right
+
+        let snek2 = Snekment.new(start_direction, 30, 50, null);
+        let snek1 = Snekment.new(start_direction, 40, 50, snek2);
+        let head = Snekment.new(start_direction, 50, 50, snek1);
+
+        return this; 
+    }
+
+    /** Dispose of all Snekments and the Snek */
+    method void dispose() {
+        do head.dispose();
+        do Memory.deAlloc(this);
+        return; 
+    }
+
+    /** Move the snek up. */
+    method void moveUp() {
+        // Possibly we should move the snake and then redraw the entire thing,
+        // rather than redrawing it while moving it
+        do head.move(0);
+        return;
+    }
+
+    method void moveRight() {
+        do head.move(1);
+        return;
+    }
+
+    method void moveDown() {
+        do head.move(2);
+        return;
+    }
+
+    method void moveLeft() {
+        do head.move(3);
+        return;
+    }
+
+}

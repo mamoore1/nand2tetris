@@ -1,0 +1,73 @@
+function Snek.new 3
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push constant 1
+pop local 2
+push local 2
+push constant 30
+push constant 50
+push constant 0
+call Snekment.new 4
+pop local 1
+push local 2
+push constant 40
+push constant 50
+push local 1
+call Snekment.new 4
+pop local 0
+push local 2
+push constant 50
+push constant 50
+push local 0
+call Snekment.new 4
+pop this 0
+push pointer 0
+return
+function Snek.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Snekment.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Snek.moveUp 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+call Snekment.move 2
+pop temp 0
+push constant 0
+return
+function Snek.moveRight 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 1
+call Snekment.move 2
+pop temp 0
+push constant 0
+return
+function Snek.moveDown 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 2
+call Snekment.move 2
+pop temp 0
+push constant 0
+return
+function Snek.moveLeft 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 3
+call Snekment.move 2
+pop temp 0
+push constant 0
+return
