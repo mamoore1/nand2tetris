@@ -1,6 +1,7 @@
 import typing
 
-from JackCompiler.src import enums
+# from JackCompiler.src import enums
+import enums as enums
 
 VALID_SYMBOLS = "{}()[].,;+-*/&|<>=~"
 

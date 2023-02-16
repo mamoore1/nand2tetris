@@ -49,6 +49,15 @@ class SymbolKindEnum(AutoStringEnum):
     VAR = enum.auto()
 
 
+class SymbolCategoryEnum(AutoStringEnum):
+    STATIC = enum.auto()
+    FIELD = enum.auto()
+    ARG = enum.auto()
+    VAR = enum.auto()
+    CLASS = enum.auto()
+    SUBROUTINE = enum.auto()
+
+
 class VarTypeEnum(AutoStringEnum):
     INT = enum.auto()
     STR = enum.auto()

@@ -47,21 +47,21 @@ def print_tokens(tokenizer: tk.Tokenizer, f: TextIOWrapper) -> None:
         token_type = tokenizer.token_type()
 
         type_to_token = {
-            enums.TokenTypeEnum.KEYWORD: tokenizer.keyword,
-            enums.TokenTypeEnum.SYMBOL: tokenizer.symbol,
-            enums.TokenTypeEnum.IDENTIFIER: tokenizer.identifier,
-            enums.TokenTypeEnum.STRING_CONST: tokenizer.string_val,
-            enums.TokenTypeEnum.INT_CONST: tokenizer.int_val,
+            enums.TokenTypeEnum.KEYWORD.lower(): tokenizer.keyword,
+            enums.TokenTypeEnum.SYMBOL.lower(): tokenizer.symbol,
+            enums.TokenTypeEnum.IDENTIFIER.lower(): tokenizer.identifier,
+            enums.TokenTypeEnum.STRING_CONST.lower(): tokenizer.string_val,
+            enums.TokenTypeEnum.INT_CONST.lower(): tokenizer.int_val,
         }
         f.write(
-            f"<{token_type.value}> {type_to_token[token_type]()}"
-            f" </{token_type.value}>\n"
+            f"<{token_type}> {type_to_token[token_type]()}"
+            f" </{token_type}>\n"
         )
     # Final token
     token_type = tokenizer.token_type()
     f.write(
-            f"<{token_type.value}> {type_to_token[token_type]()}"
-            f" </{token_type.value}>\n"
+            f"<{token_type}> {type_to_token[token_type]()}"
+            f" </{token_type}>\n"
         )
 
     f.write("</tokens>\n")
@@ -74,21 +74,21 @@ def tokens_to_list(tokenizer: tk.Tokenizer) -> list[str]:
         token_type = tokenizer.token_type()
 
         type_to_token = {
-            enums.TokenTypeEnum.KEYWORD: tokenizer.keyword,
-            enums.TokenTypeEnum.SYMBOL: tokenizer.symbol,
-            enums.TokenTypeEnum.IDENTIFIER: tokenizer.identifier,
-            enums.TokenTypeEnum.STRING_CONST: tokenizer.string_val,
-            enums.TokenTypeEnum.INT_CONST: tokenizer.int_val,
+            enums.TokenTypeEnum.KEYWORD.lower(): tokenizer.keyword,
+            enums.TokenTypeEnum.SYMBOL.lower(): tokenizer.symbol,
+            enums.TokenTypeEnum.IDENTIFIER.lower(): tokenizer.identifier,
+            enums.TokenTypeEnum.STRING_CONST.lower(): tokenizer.string_val,
+            enums.TokenTypeEnum.INT_CONST.lower(): tokenizer.int_val,
         }
         tokens.append(
-            f"<{token_type.value}> {type_to_token[token_type]()}"
-            f" </{token_type.value}>\n"
+            f"<{token_type}> {type_to_token[token_type]()}"
+            f" </{token_type}>\n"
         )
     # Final token
     token_type = tokenizer.token_type()
     tokens.append(
-            f"<{token_type.value}> {type_to_token[token_type]()}"
-            f" </{token_type.value}>\n"
+            f"<{token_type}> {type_to_token[token_type]()}"
+            f" </{token_type}>\n"
         )
 
     return tokens

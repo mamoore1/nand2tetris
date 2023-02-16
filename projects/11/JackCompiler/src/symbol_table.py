@@ -1,7 +1,7 @@
-from multiprocessing.sharedctypes import Value
 import typing as t
 
-from JackCompiler.src import enums
+# from JackCompiler.src import enums
+import enums as enums
 
 class SymbolTable:
     
@@ -37,7 +37,10 @@ class SymbolTable:
         self.var_index = 0
 
     def define(
-        self, name: str, type_: enums.VarTypeEnum, kind: enums.SymbolKindEnum
+        self, 
+        name: str, 
+        type_: t.Union[enums.VarTypeEnum, str], 
+        kind: enums.SymbolKindEnum
     ):
         """
         Add a new row to the symbol table; we use the row name as the key to a
@@ -47,7 +50,7 @@ class SymbolTable:
         index_value = getattr(self, index_name)
 
         self.rows[name] = {
-            "type": type_,
+            "type": type_,  # types can be Jack primitives or custom user types
             "kind": kind,
             "index": index_value
         }
