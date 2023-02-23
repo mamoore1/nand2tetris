@@ -38,10 +38,10 @@ def engine():
             ],
             [
                 "<class>\n",
-                "  <keyword> class </keyword>\n",
-                f"  name: {CLASS_NAME}, category: class, index: None, usage: declared\n",
-                "  <symbol> { </symbol>\n",
-                "  <symbol> } </symbol>\n",
+                "<keyword> class </keyword>\n",
+                f"name: {CLASS_NAME}, category: class, index: None, usage: declared\n",
+                "<symbol> { </symbol>\n",
+                "<symbol> } </symbol>\n",
                 "</class>\n",
             ],
             []
@@ -72,41 +72,41 @@ def engine():
             ],
             [
                 "<class>\n",
-                "  <keyword> class </keyword>\n",
-                f"  name: {CLASS_NAME}, category: class, index: None, usage: declared\n",
-                "  <symbol> { </symbol>\n",
-                "  <subroutineDec>\n",
-                "    <keyword> function </keyword>\n",
-                "    <keyword> void </void>\n",
-                "    name: draw, category: subroutine, index: None, usage: declared\n",
-                "    <symbol> ( </symbol>\n",
-                "    <parameterList>\n",
-                "      <keyword> int </keyword>\n",
-                "      name: input, category: arg, index: 0, usage: declared\n",
-                "      <symbol> , </symbol>\n",
-                "      <keyword> int </keyword>\n",
-                "      name: output, category: arg, index: 1, usage: declared\n",
-                "    </parameterList>\n",
-                "    <symbol> ) </symbol>\n",
-                "    <subroutineBody>\n",
-                "      <symbol> { </symbol>\n",
-                "      <statements>\n",
-                "        <letStatement>\n",
-                "          <keyword> let </keyword>\n",
-                "          name: x, category: var, index: 0, usage: used\n",
-                "          <symbol> = </symbol>\n",
-                "          <expression>\n",
-                "            <term>\n",
-                "              <integerConstant> 3 </integerConstant>\n",
-                "            </term>\n",
-                "          </expression>\n",
-                "          <symbol> ; </symbol>\n",
-                "        </letStatement>\n",
-                "      </statements>\n",   
-                "      <symbol> } </symbol>\n",
-                "    </subroutineBody>\n",
-                "  </subroutineDec>\n",
-                "  <symbol> } </symbol>\n",
+                "<keyword> class </keyword>\n",
+                f"name: {CLASS_NAME}, category: class, index: None, usage: declared\n",
+                "<symbol> { </symbol>\n",
+                "<subroutineDec>\n",
+                "<keyword> function </keyword>\n",
+                "<keyword> void </void>\n",
+                "name: draw, category: subroutine, index: None, usage: declared\n",
+                "<symbol> ( </symbol>\n",
+                "<parameterList>\n",
+                "<keyword> int </keyword>\n",
+                "name: input, category: arg, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "<keyword> int </keyword>\n",
+                "name: output, category: arg, index: 1, usage: declared\n",
+                "</parameterList>\n",
+                "<symbol> ) </symbol>\n",
+                "<subroutineBody>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",   
+                "<symbol> } </symbol>\n",
+                "</subroutineBody>\n",
+                "</subroutineDec>\n",
+                "<symbol> } </symbol>\n",
                 "</class>\n",
             ],
             [
@@ -149,49 +149,49 @@ def engine():
             ],
             [
                 "<class>\n",
-                "  <keyword> class </keyword>\n",
-                f"  name: {CLASS_NAME}, category: class, index: None, usage: declared\n",
-                "  <symbol> { </symbol>\n",
-                "  <classVarDec>\n",
-                "    <keyword> static </keyword>\n",
-                "    <keyword> int </keyword>\n",
-                "    name: abc, category: static, index: 0, usage: declared\n",
-                "    <symbol> , </symbol>\n",
-                "    name: xyz, category: static, index: 1, usage: declared\n",
-                "    <symbol> ; </symbol>\n",
-                "  </classVarDec>\n",
-                "  <subroutineDec>\n",
-                "    <keyword> function </keyword>\n",
-                "    <keyword> void </void>\n",
-                "    name: draw, category: subroutine, index: None, usage: declared\n",
-                "    <symbol> ( </symbol>\n",
-                "    <parameterList>\n",
-                "      <keyword> int </keyword>\n",
-                "      name: input, category: arg, index: 0, usage: declared\n",
-                "      <symbol> , </symbol>\n",
-                "      <keyword> int </keyword>\n",
-                "      name: output, category: arg, index: 1, usage: declared\n",
-                "    </parameterList>\n",
-                "    <symbol> ) </symbol>\n",
-                "    <subroutineBody>\n",
-                "      <symbol> { </symbol>\n",
-                "      <statements>\n",
-                "        <letStatement>\n",
-                "          <keyword> let </keyword>\n",
-                "          name: x, category: var, index: 0, usage: used\n",
-                "          <symbol> = </symbol>\n",
-                "          <expression>\n",
-                "            <term>\n",
-                "              <integerConstant> 3 </integerConstant>\n",
-                "            </term>\n",
-                "          </expression>\n",
-                "          <symbol> ; </symbol>\n",
-                "        </letStatement>\n",
-                "      </statements>\n",   
-                "      <symbol> } </symbol>\n",
-                "    </subroutineBody>\n",
-                "  </subroutineDec>\n",
-                "  <symbol> } </symbol>\n",
+                "<keyword> class </keyword>\n",
+                f"name: {CLASS_NAME}, category: class, index: None, usage: declared\n",
+                "<symbol> { </symbol>\n",
+                "<classVarDec>\n",
+                "<keyword> static </keyword>\n",
+                "<keyword> int </keyword>\n",
+                "name: abc, category: static, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "name: xyz, category: static, index: 1, usage: declared\n",
+                "<symbol> ; </symbol>\n",
+                "</classVarDec>\n",
+                "<subroutineDec>\n",
+                "<keyword> function </keyword>\n",
+                "<keyword> void </void>\n",
+                "name: draw, category: subroutine, index: None, usage: declared\n",
+                "<symbol> ( </symbol>\n",
+                "<parameterList>\n",
+                "<keyword> int </keyword>\n",
+                "name: input, category: arg, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "<keyword> int </keyword>\n",
+                "name: output, category: arg, index: 1, usage: declared\n",
+                "</parameterList>\n",
+                "<symbol> ) </symbol>\n",
+                "<subroutineBody>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",   
+                "<symbol> } </symbol>\n",
+                "</subroutineBody>\n",
+                "</subroutineDec>\n",
+                "<symbol> } </symbol>\n",
                 "</class>\n",
             ],
             [
@@ -217,7 +217,7 @@ def test_compile_class(
         )
 
     engine.input_lines = input_lines
-    engine.compile_class(0)
+    engine.compile_class()
 
     assert "".join(expected) ==  engine.destination.getvalue()
     
@@ -233,10 +233,10 @@ def test_compile_class(
             ],
             [
                 "<classVarDec>\n",
-                "  <keyword> static </keyword>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: xyz, category: static, index: 0, usage: declared\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> static </keyword>\n",
+                "<keyword> int </keyword>\n",
+                "name: xyz, category: static, index: 0, usage: declared\n",
+                "<symbol> ; </symbol>\n",
                 "</classVarDec>\n",
             ],
         ),
@@ -251,12 +251,12 @@ def test_compile_class(
             ],
             [
                 "<classVarDec>\n",
-                "  <keyword> static </keyword>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: abc, category: static, index: 0, usage: declared\n",
-                "  <symbol> , </symbol>\n",
-                "  name: xyz, category: static, index: 1, usage: declared\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> static </keyword>\n",
+                "<keyword> int </keyword>\n",
+                "name: abc, category: static, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "name: xyz, category: static, index: 1, usage: declared\n",
+                "<symbol> ; </symbol>\n",
                 "</classVarDec>\n",
             ]
         ),
@@ -269,10 +269,10 @@ def test_compile_class(
             ],
             [
                 "<classVarDec>\n",
-                "  <keyword> static </keyword>\n",
-                "  name: Square, category: class, index: None, usage: used\n",
-                "  name: square, category: static, index: 0, usage: declared\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> static </keyword>\n",
+                "name: Square, category: class, index: None, usage: used\n",
+                "name: square, category: static, index: 0, usage: declared\n",
+                "<symbol> ; </symbol>\n",
                 "</classVarDec>\n",
             ]
         )
@@ -282,7 +282,7 @@ def test_compile_class_var_dec(
     input_lines: list[str], expected: list[str], engine: ce.ComplilationEngine,
 ):
     engine.input_lines = input_lines
-    engine.compile_class_var_dec(0)
+    engine.compile_class_var_dec()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -301,19 +301,19 @@ def test_compile_class_var_dec(
             ],
             [
                 "<subroutineDec>\n",
-                "  <keyword> function </keyword>\n",
-                "  <keyword> void </void>\n",
-                "  name: draw, category: subroutine, index: None, usage: declared\n",
-                "  <symbol> ( </symbol>\n",
-                "  <parameterList>\n",
-                "  </parameterList>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <subroutineBody>\n",
-                "    <symbol> { </symbol>\n",
-                "    <statements>\n",
-                "    </statements>\n",
-                "    <symbol> } </symbol>\n",
-                "  </subroutineBody>\n",
+                "<keyword> function </keyword>\n",
+                "<keyword> void </void>\n",
+                "name: draw, category: subroutine, index: None, usage: declared\n",
+                "<symbol> ( </symbol>\n",
+                "<parameterList>\n",
+                "</parameterList>\n",
+                "<symbol> ) </symbol>\n",
+                "<subroutineBody>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
+                "</subroutineBody>\n",
                 "</subroutineDec>\n",
             ],
             [],
@@ -340,35 +340,35 @@ def test_compile_class_var_dec(
             ],
             [
                 "<subroutineDec>\n",
-                "  <keyword> function </keyword>\n",
-                "  <keyword> void </void>\n",
-                "  name: draw, category: subroutine, index: None, usage: declared\n",
-                "  <symbol> ( </symbol>\n",
-                "  <parameterList>\n",
-                "    <keyword> int </keyword>\n",
-                "    name: input, category: arg, index: 0, usage: declared\n",
-                "    <symbol> , </symbol>\n",
-                "    <keyword> int </keyword>\n",
-                "    name: output, category: arg, index: 1, usage: declared\n",
-                "  </parameterList>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <subroutineBody>\n",
-                "    <symbol> { </symbol>\n",
-                "    <statements>\n",
-                "      <letStatement>\n",
-                "        <keyword> let </keyword>\n",
-                "        name: x, category: var, index: 0, usage: used\n",
-                "        <symbol> = </symbol>\n",
-                "        <expression>\n",
-                "          <term>\n",
-                "            <integerConstant> 3 </integerConstant>\n",
-                "          </term>\n",
-                "        </expression>\n",
-                "        <symbol> ; </symbol>\n",
-                "      </letStatement>\n",
-                "    </statements>\n",   
-                "    <symbol> } </symbol>\n",
-                "  </subroutineBody>\n",
+                "<keyword> function </keyword>\n",
+                "<keyword> void </void>\n",
+                "name: draw, category: subroutine, index: None, usage: declared\n",
+                "<symbol> ( </symbol>\n",
+                "<parameterList>\n",
+                "<keyword> int </keyword>\n",
+                "name: input, category: arg, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "<keyword> int </keyword>\n",
+                "name: output, category: arg, index: 1, usage: declared\n",
+                "</parameterList>\n",
+                "<symbol> ) </symbol>\n",
+                "<subroutineBody>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",   
+                "<symbol> } </symbol>\n",
+                "</subroutineBody>\n",
                 "</subroutineDec>\n",
             ],
             [
@@ -393,7 +393,7 @@ def test_compile_subroutine(
         )
 
     engine.input_lines = input_lines
-    engine.compile_subroutine(0)
+    engine.compile_subroutine()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -411,8 +411,8 @@ def test_compile_subroutine(
             ],
             [
                 "<parameterList>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: input, category: arg, index: 0, usage: declared\n",
+                "<keyword> int </keyword>\n",
+                "name: input, category: arg, index: 0, usage: declared\n",
                 "</parameterList>\n",
             ]
         ),
@@ -426,11 +426,11 @@ def test_compile_subroutine(
             ],
             [
                 "<parameterList>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: input, category: arg, index: 0, usage: declared\n",
-                "  <symbol> , </symbol>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: output, category: arg, index: 1, usage: declared\n",
+                "<keyword> int </keyword>\n",
+                "name: input, category: arg, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "<keyword> int </keyword>\n",
+                "name: output, category: arg, index: 1, usage: declared\n",
                 "</parameterList>\n",
             ]
         )
@@ -440,7 +440,7 @@ def test_compile_parameter_list(
     input_lines: list[str], expected: list[str], engine: ce.ComplilationEngine,
 ):
     engine.input_lines = input_lines
-    engine.compile_parameter_list(0)
+    engine.compile_parameter_list()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -455,10 +455,10 @@ def test_compile_parameter_list(
             ],
             [
                 "<subroutineBody>\n",
-                "  <symbol> { </symbol>\n",
-                "  <statements>\n",
-                "  </statements>\n",
-                "  <symbol> } </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
                 "</subroutineBody>\n",
             ],
             []
@@ -475,21 +475,21 @@ def test_compile_parameter_list(
             ],
             [
                 "<subroutineBody>\n",
-                "  <symbol> { </symbol>\n",
-                "  <statements>\n",
-                "    <letStatement>\n",
-                "      <keyword> let </keyword>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "      <symbol> = </symbol>\n",
-                "      <expression>\n",
-                "        <term>\n",
-                "          <integerConstant> 3 </integerConstant>\n",
-                "        </term>\n",
-                "      </expression>\n",
-                "      <symbol> ; </symbol>\n",
-                "    </letStatement>\n",
-                "  </statements>\n",   
-                "  <symbol> } </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",   
+                "<symbol> } </symbol>\n",
                 "</subroutineBody>\n",
             ],
             [
@@ -516,27 +516,27 @@ def test_compile_parameter_list(
             ],
             [
                 "<subroutineBody>\n",
-                "  <symbol> { </symbol>\n",
-                "  <varDec>\n",
-                "    <keyword> var </keyword>\n",
-                "    <keyword> int </keyword>\n",
-                "    name: xyz, category: var, index: 0, usage: declared\n",
-                "    <symbol> ; </symbol>\n",
-                "  </varDec>\n",
-                "  <statements>\n",
-                "    <letStatement>\n",
-                "      <keyword> let </keyword>\n",
-                "      name: xyz, category: var, index: 0, usage: used\n",
-                "      <symbol> = </symbol>\n",
-                "      <expression>\n",
-                "        <term>\n",
-                "          <integerConstant> 3 </integerConstant>\n",
-                "        </term>\n",
-                "      </expression>\n",
-                "      <symbol> ; </symbol>\n",
-                "    </letStatement>\n",
-                "  </statements>\n",   
-                "  <symbol> } </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<varDec>\n",
+                "<keyword> var </keyword>\n",
+                "<keyword> int </keyword>\n",
+                "name: xyz, category: var, index: 0, usage: declared\n",
+                "<symbol> ; </symbol>\n",
+                "</varDec>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: xyz, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",   
+                "<symbol> } </symbol>\n",
                 "</subroutineBody>\n",
             ],
             []
@@ -555,7 +555,7 @@ def test_compile_subroutine_body(
         )
 
     engine.input_lines = input_lines
-    engine.compile_subroutine_body(0)
+    engine.compile_subroutine_body()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -571,10 +571,10 @@ def test_compile_subroutine_body(
             ],
             [
                 "<varDec>\n",
-                "  <keyword> var </keyword>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: x, category: var, index: 0, usage: declared\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> var </keyword>\n",
+                "<keyword> int </keyword>\n",
+                "name: x, category: var, index: 0, usage: declared\n",
+                "<symbol> ; </symbol>\n",
                 "</varDec>\n"
             ]
         ),
@@ -589,12 +589,12 @@ def test_compile_subroutine_body(
             ],
             [
                 "<varDec>\n",
-                "  <keyword> var </keyword>\n",
-                "  <keyword> int </keyword>\n",
-                "  name: x, category: var, index: 0, usage: declared\n",
-                "  <symbol> , </symbol>\n",
-                "  name: y, category: var, index: 1, usage: declared\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> var </keyword>\n",
+                "<keyword> int </keyword>\n",
+                "name: x, category: var, index: 0, usage: declared\n",
+                "<symbol> , </symbol>\n",
+                "name: y, category: var, index: 1, usage: declared\n",
+                "<symbol> ; </symbol>\n",
                 "</varDec>\n"
             ]
         ),
@@ -607,10 +607,10 @@ def test_compile_subroutine_body(
             ],
             [
                 "<varDec>\n",
-                "  <keyword> var </keyword>\n",
-                "  name: Square, category: class, index: None, usage: used\n",
-                "  name: square, category: var, index: 0, usage: declared\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> var </keyword>\n",
+                "name: Square, category: class, index: None, usage: used\n",
+                "name: square, category: var, index: 0, usage: declared\n",
+                "<symbol> ; </symbol>\n",
                 "</varDec>\n",
             ]
         )
@@ -620,7 +620,7 @@ def test_compile_var_dec(
     input_lines: list[str], expected: list[str], engine: ce.ComplilationEngine
 ):
     engine.input_lines = input_lines
-    engine.compile_var_dec(0)
+    engine.compile_var_dec()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -636,17 +636,17 @@ def test_compile_var_dec(
             ],
             [
                 "<statements>\n",
-                "  <letStatement>\n",
-                "    <keyword> let </keyword>\n",
-                "    name: x, category: var, index: 0, usage: used\n",
-                "    <symbol> = </symbol>\n",
-                "    <expression>\n",
-                "      <term>\n",
-                "        <integerConstant> 3 </integerConstant>\n",
-                "      </term>\n",
-                "    </expression>\n",
-                "    <symbol> ; </symbol>\n",
-                "  </letStatement>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
                 "</statements>\n",    
             ],
             [
@@ -676,40 +676,40 @@ def test_compile_var_dec(
             ],
             [
                 "<statements>\n",
-                "  <whileStatement>\n",
-                "    <keyword> while </keyword>\n",
-                "    <symbol> ( </symbol>\n",
-                "    <expression>\n",
-                "      <term>\n",
-                "        name: x, category: var, index: 0, usage: used\n",
-                "      </term>\n",
-                "    </expression>\n",
-                "    <symbol> ) </symbol>\n",
-                "    <symbol> { </symbol>\n",
-                "    <statements>\n",
-                "      <letStatement>\n",
-                "        <keyword> let </keyword>\n",
-                "        name: x, category: var, index: 0, usage: used\n",
-                "        <symbol> = </symbol>\n",
-                "        <expression>\n",
-                "          <term>\n",
-                "            <integerConstant> 3 </integerConstant>\n",
-                "          </term>\n",
-                "        </expression>\n",
-                "        <symbol> ; </symbol>\n",
-                "      </letStatement>\n",
-                "    </statements>\n",
-                "    <symbol> } </symbol>\n",
-                "  </whileStatement>\n",
-                "  <returnStatement>\n",
-                "    <keyword> return </keyword\n",
-                "    <expression>\n",
-                "      <term>\n",
-                "        <integerConstant> 3 </integerConstant>\n",
-                "      </term>\n",
-                "    </expression>\n",
-                "    <symbol> ; </symbol>\n",
-                "  </returnStatement>\n",
+                "<whileStatement>\n",
+                "<keyword> while </keyword>\n",
+                "<symbol> ( </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ) </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
+                "</whileStatement>\n",
+                "<returnStatement>\n",
+                "<keyword> return </keyword\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</returnStatement>\n",
                 "</statements>\n",
             ],
             [
@@ -735,7 +735,7 @@ def test_compile_statements(
         )
 
     engine.input_lines = input_lines
-    engine.compile_statements(0)
+    engine.compile_statements()
     
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -752,15 +752,15 @@ def test_compile_statements(
             ],
             [
                 "<letStatement>\n",
-                "  <keyword> let </keyword>\n",
-                "  name: x, category: var, index: 0, usage: used\n",
-                "  <symbol> = </symbol>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      <integerConstant> 3 </integerConstant>\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
                 "</letStatement>\n",    
             ],
             [
@@ -786,7 +786,7 @@ def test_compile_let(
         )
 
     engine.input_lines = input_lines
-    engine.compile_let(0)
+    engine.compile_let()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -809,29 +809,29 @@ def test_compile_let(
             ],
             [
                 "<ifStatement>\n",
-                "  <keyword> if </keyword>\n",
-                "  <symbol> ( </symbol>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <symbol> { </symbol>\n",
-                "  <statements>\n",
-                "    <letStatement>\n",
-                "      <keyword> let </keyword>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "      <symbol> = </symbol>\n",
-                "      <expression>\n",
-                "        <term>\n",
-                "          <integerConstant> 3 </integerConstant>\n",
-                "        </term>\n",
-                "      </expression>\n",
-                "      <symbol> ; </symbol>\n",
-                "    </letStatement>\n",
-                "  </statements>\n",
-                "  <symbol> } </symbol>\n",
+                "<keyword> if </keyword>\n",
+                "<symbol> ( </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ) </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
                 "</ifStatement>\n",
             ],
             [
@@ -867,45 +867,45 @@ def test_compile_let(
             ],
             [
                 "<ifStatement>\n",
-                "  <keyword> if </keyword>\n",
-                "  <symbol> ( </symbol>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <symbol> { </symbol>\n",
-                "  <statements>\n",
-                "    <letStatement>\n",
-                "      <keyword> let </keyword>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "      <symbol> = </symbol>\n",
-                "      <expression>\n",
-                "        <term>\n",
-                "          <integerConstant> 3 </integerConstant>\n",
-                "        </term>\n",
-                "      </expression>\n",
-                "      <symbol> ; </symbol>\n",
-                "    </letStatement>\n",
-                "  </statements>\n",
-                "  <symbol> } </symbol>\n",
-                "  <keyword> else </keyword>\n",
-                "  <symbol> { </symbol>\n",
-                "  <statements>\n",
-                "    <letStatement>\n",
-                "      <keyword> let </keyword>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "      <symbol> = </symbol>\n",
-                "      <expression>\n",
-                "        <term>\n",
-                "          <integerConstant> 5 </integerConstant>\n",
-                "        </term>\n",
-                "      </expression>\n",
-                "      <symbol> ; </symbol>\n",
-                "    </letStatement>\n",
-                "  </statements>\n",
-                "  <symbol> } </symbol>\n",
+                "<keyword> if </keyword>\n",
+                "<symbol> ( </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ) </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
+                "<keyword> else </keyword>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 5 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
                 "</ifStatement>\n",
             ],
             [
@@ -931,7 +931,7 @@ def test_compile_if(
         )
 
     engine.input_lines = input_lines
-    engine.compile_if(0)
+    engine.compile_if()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -954,29 +954,29 @@ def test_compile_if(
             ],
             [
                 "<whileStatement>\n",
-                "  <keyword> while </keyword>\n",
-                "  <symbol> ( </symbol>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <symbol> { </symbol>\n",
-                "  <statements>\n",
-                "    <letStatement>\n",
-                "      <keyword> let </keyword>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "      <symbol> = </symbol>\n",
-                "      <expression>\n",
-                "        <term>\n",
-                "          <integerConstant> 3 </integerConstant>\n",
-                "        </term>\n",
-                "      </expression>\n",
-                "      <symbol> ; </symbol>\n",
-                "    </letStatement>\n",
-                "  </statements>\n",
-                "  <symbol> } </symbol>\n",
+                "<keyword> while </keyword>\n",
+                "<symbol> ( </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ) </symbol>\n",
+                "<symbol> { </symbol>\n",
+                "<statements>\n",
+                "<letStatement>\n",
+                "<keyword> let </keyword>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "<symbol> = </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "<integerConstant> 3 </integerConstant>\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
+                "</letStatement>\n",
+                "</statements>\n",
+                "<symbol> } </symbol>\n",
                 "</whileStatement>\n",
             ],
             [
@@ -1002,7 +1002,7 @@ def test_compile_while(
         )
 
     engine.input_lines = input_lines
-    engine.compile_while(0)
+    engine.compile_while()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -1021,16 +1021,16 @@ def test_compile_while(
             ],
             [
                 "<doStatement>\n",
-                "  <keyword> do </keyword>\n",
-                "  name: Square, category: class, index: None, usage: used\n",
-                "  <symbol> . </symbol>",
-                "  name: drawRectangle, category: subroutine, index: None,"
+                "<keyword> do </keyword>\n",
+                "name: Square, category: class, index: None, usage: used\n",
+                "<symbol> . </symbol>",
+                "name: drawRectangle, category: subroutine, index: None,"
                 " usage: used\n",
-                "  <symbol> ( </symbol>\n",
-                "  <expressionList>\n",
-                "  </expressionList>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <symbol> ; </symbol>\n", 
+                "<symbol> ( </symbol>\n",
+                "<expressionList>\n",
+                "</expressionList>\n",
+                "<symbol> ) </symbol>\n",
+                "<symbol> ; </symbol>\n", 
                 "</doStatement>\n",
             ],
             [],
@@ -1046,18 +1046,18 @@ def test_compile_while(
             ],
             [
                 "<doStatement>\n",
-                "  <keyword> do </keyword>\n",
-                "  name: drawRectangle, category: subroutine, index: None, usage: used\n",
-                "  <symbol> ( </symbol>\n",
-                "  <expressionList>\n",
-                "    <expression>\n",
-                "      <term>\n",
-                "        name: x, category: var, index: 0, usage: used\n",
-                "      </term>\n",
-                "    </expression>\n",
-                "  </expressionList>\n",
-                "  <symbol> ) </symbol>\n",
-                "  <symbol> ; </symbol>\n", 
+                "<keyword> do </keyword>\n",
+                "name: drawRectangle, category: subroutine, index: None, usage: used\n",
+                "<symbol> ( </symbol>\n",
+                "<expressionList>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "</expressionList>\n",
+                "<symbol> ) </symbol>\n",
+                "<symbol> ; </symbol>\n", 
                 "</doStatement>\n",
             ],
             [
@@ -1085,7 +1085,7 @@ def test_compile_do(
 
 
     engine.input_lines = input_lines
-    engine.compile_do(0)
+    engine.compile_do()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -1099,8 +1099,8 @@ def test_compile_do(
             ],
             [
                 "<returnStatement>\n",
-                "  <keyword> return </keyword>\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> return </keyword>\n",
+                "<symbol> ; </symbol>\n",
                 "</returnStatement>\n",
             ],
             [],
@@ -1113,13 +1113,13 @@ def test_compile_do(
             ],
             [
                 "<returnStatement>\n",
-                "  <keyword> return </keyword>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> ; </symbol>\n",
+                "<keyword> return </keyword>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ; </symbol>\n",
                 "</returnStatement>\n",
             ],
             [
@@ -1145,7 +1145,7 @@ def test_compile_return(
         )
 
     engine.input_lines = input_lines
-    engine.compile_return(0)
+    engine.compile_return()
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -1159,9 +1159,9 @@ def test_compile_return(
             ], 
             [
                 "<expression>\n",
-                "  <term>\n",
-                "    name: x, category: var, index: 0, usage: used\n",
-                "  </term>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
                 "</expression>\n",
             ],
             [
@@ -1180,13 +1180,13 @@ def test_compile_return(
             ],
             [
                 "<expression>\n",
-                "  <term>\n",
-                "    name: x, category: var, index: 0, usage: used\n",
-                "  </term>\n",
-                "  <symbol> + </symbol>\n",
-                "  <term>\n",
-                "    name: y, category: var, index: 1, usage: used\n",
-                "  </term>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "<symbol> + </symbol>\n",
+                "<term>\n",
+                "name: y, category: var, index: 1, usage: used\n",
+                "</term>\n",
                 "</expression>\n",
             ],
             [
@@ -1216,7 +1216,7 @@ def test_compile_expression(
         )
     # This test is ignoring most of the possible forms of expressions
     engine.input_lines = input_lines
-    engine.compile_expression(0) 
+    engine.compile_expression() 
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -1227,7 +1227,7 @@ def test_compile_expression(
             ["<identifier> x </identifier>\n",],
             [
                 "<term>\n",
-                "  name: x, category: var, index: 0, usage: used\n",
+                "name: x, category: var, index: 0, usage: used\n",
                 "</term>\n",
             ],
             {
@@ -1240,7 +1240,7 @@ def test_compile_expression(
             ["<integerConstant> 3 </integerConstant>\n",],
             [
                 "<term>\n",
-                "  <integerConstant> 3 </integerConstant>\n",
+                "<integerConstant> 3 </integerConstant>\n",
                 "</term>\n",
             ],
             {
@@ -1256,10 +1256,10 @@ def test_compile_expression(
             ],
             [
                 "<term>\n",
-                "  <symbol> - </symbol>\n",
-                "  <term>\n",
-                "    name: x, category: var, index: 0, usage: used\n",
-                "  </term>\n"
+                "<symbol> - </symbol>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n"
                 "</term>\n",
             ],
             {
@@ -1276,13 +1276,13 @@ def test_compile_expression(
             ],
             [
                 "<term>\n",
-                "  <symbol> ( </symbol>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: var, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> ) </symbol>\n",
+                "<symbol> ( </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: var, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> ) </symbol>\n",
                 "</term>\n",
             ],
             {
@@ -1303,7 +1303,7 @@ def test_compile_term(
     engine.function_table.define(
         symbols["name"], symbols["type"], symbols["category"]
     )
-    engine.compile_term(0) 
+    engine.compile_term() 
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -1314,11 +1314,11 @@ def test_compile_term(
             ["<identifier> x </identifier>\n"],
             [
                 "<expressionList>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: arg, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: arg, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
                 "</expressionList>\n",
             ],
             [
@@ -1337,17 +1337,17 @@ def test_compile_term(
             ],
             [
                 "<expressionList>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: x, category: arg, index: 0, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
-                "  <symbol> , </symbol>\n",
-                "  <expression>\n",
-                "    <term>\n",
-                "      name: y, category: arg, index: 1, usage: used\n",
-                "    </term>\n",
-                "  </expression>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: x, category: arg, index: 0, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
+                "<symbol> , </symbol>\n",
+                "<expression>\n",
+                "<term>\n",
+                "name: y, category: arg, index: 1, usage: used\n",
+                "</term>\n",
+                "</expression>\n",
                 "</expressionList>\n",
             ],
             [
@@ -1378,7 +1378,7 @@ def test_compile_expression_list(
         engine.function_table.define(
             symbol["name"], symbol["type"], symbol["kind"]
         )
-    engine.compile_expression_list(0) 
+    engine.compile_expression_list() 
 
     assert "".join(expected) == engine.destination.getvalue()
 
@@ -1422,6 +1422,67 @@ def test_compile_subroutine_call(
     input_lines: list[str], expected: list[str], engine: ce.ComplilationEngine
 ):
     engine.input_lines = input_lines
-    engine.compile_subroutine_call(0)
+    engine.compile_subroutine_call()
 
     assert "".join(expected) == engine.destination.getvalue()
+
+
+@pytest.mark.parametrize(
+    "input_lines,expected", [
+        (
+            ["<identifier> x </identifier>\n",], 
+            ["push x\n"],
+        ),
+        (
+            [
+                "<identifier> x </identifier>\n",
+                "<symbol> + </symbol>\n",
+                "<identifier> y </identifier>\n"
+            ],
+            ["push x\n", "push y\n", "add\n"],
+        ),
+        (
+            [
+                "<identifier> z </identifier>\n",
+                "<symbol> * </symbol>\n",
+                "<identifier> a </identifier>\n",
+            ],
+            [
+                "push z\n", "push a\n", "Math.multiply\n",
+            ]
+        ),
+        (
+            [
+                "<identifier> x </identifier>\n",
+                "<symbol> + </symbol>\n",
+                "<identifier> g </identifier>\n",
+                "<symbol> ( </symbol>\n",
+                "<int_constant> 2 </int_constant>\n",
+                "<symbol> , </symbol>\n",
+                "<identifier> y </identifier>\n",
+                "<symbol> - </symbol>\n",
+                "<int_constant> 5 </int_constant>\n",
+                "<symbol> , </symbol>\n",
+                "<symbol> - </symbol>\n",
+                "<identifier> z </identifier>\n",
+                "<symbol> ) </symbol>\n",
+            ],
+            [
+                "push x\n", 
+                "push 2\n", 
+                "push y\n", 
+                "push 5\n", 
+                "sub\n", 
+                "push z\n", 
+                "neg\n",
+                "call g 3\n",
+                "add\n",  
+            ],
+        ),
+    ]
+)
+def test_code_write(
+    input_lines: list[str], expected: list[str], engine: ce.ComplilationEngine
+):
+    output = ce.code_write(input_lines)
+    assert "".join(expected) == "".join(output)
