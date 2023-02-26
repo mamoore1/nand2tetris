@@ -526,6 +526,10 @@ def code_write(lines: list[str]) -> list[str]:
         "*": "Math.multiply",
         "/": "Math.divide",
     }
+    map_symbol_to_unary_op = {
+        "-": "neg",
+        "!": "not",
+    }
 
     if len(lines) >= 2 and get_value(lines[1]) in OPS:
         
@@ -537,10 +541,33 @@ def code_write(lines: list[str]) -> list[str]:
         output_lines.extend(code_write(exp_2))
 
         output_lines.append(f"{map_symbol_to_op[op]}\n")
+    elif (
+        len(lines) > 2 
+        and "identifier" in lines[0] 
+        and get_value(lines[1]) == "("
+    ):
+        func = pop_value_from_next_line(lines)
+        pop_next_line(lines)  # "("
+        while ")" not in lines[0]:
+            lines_to_parse = []
+            while get_value(lines[0]) not in "),":
+                lines_to_parse.append(pop_next_line(lines))
+            output_lines.extend(code_write(lines_to_parse))
+            if "," in lines[0]:
+                pop_next_line(lines)
+
+        output_lines.extend(f"call {func}\n")
+    elif len(lines) >= 2 and get_value(lines[0]) in UNARY_OPS:
+        op = pop_value_from_next_line(lines)
+        
+        output_lines.extend(code_write(pop_next_line(lines)))
+        output_lines.extend(f"{map_symbol_to_unary_op[op]}\n")
     elif "identifier" in lines[0]:
         term = pop_value_from_next_line(lines)
         output_lines.append(f"push {term}\n")
-    
+    elif "const" in lines[0]:
+        output_lines.extend(f"push {pop_value_from_next_line(lines)}\n")
+
     return output_lines
 
 
