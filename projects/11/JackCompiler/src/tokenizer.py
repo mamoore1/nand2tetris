@@ -1,7 +1,6 @@
 import typing
 
-from JackCompiler.src import enums
-# import enums as enums
+import JackCompiler.src.enums as enums
 
 VALID_SYMBOLS = "{}()[].,;+-*/&|<>=~"
 
@@ -50,7 +49,6 @@ class Tokenizer:
         self.current_token = self._get_next_token()
 
     def token_type(self) -> enums.TokenTypeEnum:
-        
         if enums.KeywordEnum.__members__.get(self.current_token.upper()):
             return enums.TokenTypeEnum.KEYWORD.lower()
         elif self.current_token in VALID_SYMBOLS:
@@ -144,7 +142,7 @@ class Tokenizer:
 
         while self.current_index < len(self.current_line):
             current_char = self.current_line.pop(0)
-            if current_char in VALID_SYMBOLS:
+            if current_char in VALID_SYMBOLS and not string_opened:
                 return current_char
             elif current_char == '"':
                 token.append("\"")

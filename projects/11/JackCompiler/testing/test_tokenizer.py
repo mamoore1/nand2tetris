@@ -112,3 +112,11 @@ def test_string_val(tokenizer: tk.Tokenizer):
     tokenizer.advance()
     assert "hello world" == tokenizer.string_val()
 
+
+def test_string_val_2(tokenizer: tk.Tokenizer):
+    tokenizer.input_lines = [
+        "\"Test 1: expected result: 5; actual result: \""
+    ]
+    tokenizer.advance()
+    assert "Test 1: expected result: 5; actual result: " == tokenizer.string_val()
+

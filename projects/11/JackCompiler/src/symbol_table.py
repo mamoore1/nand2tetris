@@ -1,7 +1,6 @@
 import typing as t
 
-from JackCompiler.src import enums
-# import enums as enums
+import JackCompiler.src.enums as enums
 
 class SymbolTable:
     
