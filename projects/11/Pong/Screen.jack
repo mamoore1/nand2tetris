@@ -1,0 +1,241 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Screen.jack
+
+/**
+ * A library of functions for displaying graphics on the screen.
+ * The Hack physical screen consists of 256 rows (indexed 0..255, top to bottom)
+ * of 512 pixels each (indexed 0..511, left to right). The top left pixel on 
+ * the screen is indexed (0,0).
+ */
+class Screen {
+
+    static Array screen;
+    static int screen_end;
+    static bool colour;
+
+    /** Initializes the Screen. */
+    function void init() {
+        let screen = 16384;  // Start of screen segment
+        let screen_end = 24575; // End of screen segment
+        let colour = true;  
+        return;
+    }
+
+    /** Erases the entire screen. */
+    function void clearScreen() {
+        var int current_pixel;
+        
+        let current_pixel = screen;
+        while (current_pixel < screen_end + 1) {
+            let screen[current_pixel] = 0;
+            let current_pixel = current_pixel + 1;
+        }
+        return;
+    }
+
+    /** Sets the current color, to be used for all subsequent drawXXX commands.
+     *  Black is represented by true, white by false. */
+    function void setColor(boolean b) {
+        let colour = b;
+        return;
+    }
+
+    /** Draws the (x,y) pixel, using the current color. */
+    function void drawPixel(int x, int y) {
+        // x and y are defined with the top-left corner being 0,0
+        var int screen_size, word_address, word, pixel_address, mask;
+
+        let screen_size = screen_end - screen;
+
+        // The pixel at row r from the top and column c from the left is mapped
+        // onto the c % 16th bit of the 16-bit word stored in 
+        // Screen[r * 32 + c / 16]
+        let word_address = (y * 32) + (x / 16); 
+        let word = screen[word_address];
+
+        // x % 16
+        let pixel_address = x - ((x / 16) * 16);
+
+        // update the word
+        let mask = Screen.get_mask(pixel_address);
+        
+        if (colour) {
+            let screen[word_address] = word | mask;
+        }
+        else {
+            let screen[word_address] = word & ~mask;
+        }
+        
+        return;
+    }
+
+    /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
+    function void drawLine(int x1, int y1, int x2, int y2) {
+        var int x, y, dx, dy, a, b, diff, temp, factor_a, factor_b;
+
+        // Positive dx (currently) means we're going to the right, while positive
+        // dy means we're going down. We need to handle left (negative dx)
+        // and up (negative dy). Technically we actually only need to handle one
+        // of these, as, e.g., up/right can be treated as down/left, so if we
+        // can handle one of up or left we can handle all directions.
+
+        // We'll handle left, and ignore up. 
+
+        if (x1 = x2) {
+            let temp = Math.min(y1, y2);
+            let y2 = Math.max(y1, y2);
+            let y1 = temp;
+
+            while (y1 - 1 < y2) {
+                do Screen.drawPixel(x1, y1);
+                let y1 = y1 + 1;
+                if ((x1 = 140) & (y2 < 27)) {
+                    do Output.printString("y1: ");
+                    do Output.printInt(y1);
+                    do Output.println();
+                }
+                
+            }
+            return;
+        }
+        if (y1 = y2) {
+            let temp = Math.min(x1, x2);
+            let x2 = Math.max(x1, x2);
+            let x1 = temp;
+
+            while (x1 - 1 < x2) {
+                do Screen.drawPixel(x1, y1);
+                let x1 = x1 + 1;
+            }
+            return;
+        }
+
+        let factor_a = 1;
+        let factor_b = 1;
+    
+        // If y1 is bigger than y2, we want to swap them so we can draw it 
+        // downwards instead; We also need to swap the direction and locations 
+        // of x1 -> x2
+        if ((x1 > x2) & (y1 > y2)) {
+                let temp = y2;
+                let y2 = y1;
+                let y1 = temp;
+
+                let temp = x2;
+                let x2 = x1;
+                let x1 = temp;
+        }
+        if (((x1 > x2) & ~(y1 > y2)) | (~(x1 > x2) & (y1 > y2))) {
+            if (y1 > y2) {
+                let temp = y2;
+                let y2 = y1;
+                let y1 = temp;
+
+                let temp = x2;
+                let x2 = x1;
+                let x1 = temp;
+
+                let factor_a = -1;
+            }
+            else {
+                let temp = y2;
+                let y2 = y1;
+                let y1 = temp;
+
+                let temp = x2;
+                let x2 = x1;
+                let x1 = temp;
+
+                let factor_b = -1;
+            }
+        }
+        let x = x1;
+        let y = y1;
+
+        let dx = Math.abs(x2 - x1);
+        let dy = Math.abs(y2 - y1);
+
+        let a = 0;
+        let b = 0;
+        let diff = 0;
+
+        while (((a-1) < dx) & ((b-1) < dy)) {
+            do Screen.drawPixel(x + (factor_a * a), y + (factor_b * b));
+            if (diff < 0) {
+                let a = a + 1;
+                let diff = diff + dy;
+            }
+            else {
+                let b = b + 1;
+                let diff = diff - dx;
+            }
+        }
+        return;
+
+    }
+
+    /** Draws a filled rectangle whose top left corner is (x1, y1)
+     * and bottom right corner is (x2,y2), using the current color. */
+    function void drawRectangle(int x1, int y1, int x2, int y2) {
+        var int x;
+
+        let x = x1;
+
+        while (x - 1 < x2) {
+            do Screen.drawLine(x, y1, x, y2);
+            let x = x + 1;
+        }
+
+        return;
+    }
+
+    /** Draws a filled circle of radius r<=181 around (x,y), using the current color. */
+    function void drawCircle(int x, int y, int r) {
+        var int dy;
+
+        if (r > 181) {
+            return;
+        } 
+
+        let dy = -r;
+        while ((dy - 1) < r) {
+            do Screen.drawLine(
+                (
+                    x - Math.sqrt(
+                        (r * r) - (dy * dy)
+                    )
+                ), 
+                y + dy,
+                (
+                    x + Math.sqrt(
+                        (r * r) - (dy * dy)
+                    )
+                ),
+                y + dy
+            );
+            let dy = dy + 1;
+        }
+        return;
+    }
+
+    /** Create a mask with a 1 in the index column that can be used to update 
+    the word storing a pixel to change */
+    function int get_mask(int index) {
+        var int mask, i, powers;
+
+        let i = 0;
+        let powers = 1;
+        while (i < 16) {
+            if (i = index) {
+                let mask = powers; 
+            }
+            let i = i + 1;
+            let powers = powers + powers;
+        }
+
+        return mask;
+    }
+
+}

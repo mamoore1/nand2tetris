@@ -1,0 +1,141 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+    static Array memory, NO_BLOCK;
+    static Array freeList;
+
+    /** Initializes the class. */
+    function void init() {
+        let memory = 0;
+        let freeList = 2048;
+        let memory[freeList] = 16384 - (2048 + 2); 
+        let memory[freeList + 1] = null;        
+        let NO_BLOCK = 16384;
+
+        return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+        return memory[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+        let memory[address] = value;
+        return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+        // declar vars
+        var int best_length;
+        var Array new_block,best_block,current_block,prev_block,best_prev_block;
+
+        // If there's only one freeList, we just slice off a chunk of it and
+        // return that
+        if (memory[freeList + 1] = null) {
+            let new_block = freeList;
+
+            // The new freeList will start after the current block
+            let freeList = new_block + size + 2;
+            // Set the length and next values
+            let memory[freeList] = memory[new_block] - (size + 2); 
+            let memory[freeList + 1] = null;
+
+            // Set the length and next accordingly
+            let memory[new_block] = size + 2;
+            let memory[new_block + 1] = null;
+
+            return new_block + 2;
+        }
+        // Otherwise, we need to scan through the existing memory blocks looking
+        // for the best sized one
+        else {
+            let best_block = NO_BLOCK;
+            let best_length = NO_BLOCK;
+            let best_prev_block = NO_BLOCK;
+            let prev_block = null;  // If prev_block remains null, this means 
+            // that the first block was the best one
+
+            while (~(current_block = null)) {
+                if (
+                    (memory[current_block] < best_length)
+                    & (memory[current_block] > size + 2 - 1)
+                ) {
+                    let best_block = current_block;
+                    let best_length = memory[current_block];
+                    let best_prev_block = prev_block;
+                }
+                let prev_block = current_block;
+                let current_block = memory[current_block + 1];
+            }
+
+            if (prev_block = null) { // We're in the freeList, so just slice off
+            // a chunk and return
+                let new_block = freeList;
+
+                // The new freeList will start after the current block
+                let freeList = new_block + size + 2;
+                // Set the length and next values
+                let memory[freeList] = memory[new_block] - (size + 2); 
+                let memory[freeList + 1] = memory[new_block + 1];
+
+                // Set the length and next accordingly
+                let memory[new_block] = size + 2;
+                let memory[new_block + 1] = null;
+
+                return new_block + 2;
+            }
+            // Otherwise we need to connect up the previous block and the next block
+            else {
+                let new_block = current_block;
+                let memory[prev_block + 1] = memory[current_block + 1];
+
+                let memory[new_block] = size + 2;
+                let memory[new_block + 1] = null;
+
+                return new_block + 2;
+            }
+
+        }
+
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+        // Find the end of the freeList
+        var Array prev_block,current_block;
+
+        // o starts from the element beyond "next"
+        let o = o - 2;
+
+        if (memory[freeList + 1] = null) {
+            let memory[freeList + 1] = o;
+            let memory[o + 1] = null;
+            return;
+        }
+
+        let prev_block = null;
+        let current_block = memory[freeList+1];
+
+        while (~(memory[current_block+1] = null)) {
+            let prev_block = current_block;
+            let current_block = memory[current_block + 1];
+        }
+
+        let memory[current_block + 1] = o;
+        let memory[o + 1] = null;
+        return;
+    }    
+}
